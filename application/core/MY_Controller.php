@@ -8,6 +8,8 @@ class MY_Controller extends MX_Controller
 
   private $__filter_params;
 
+  public $extraCSS;
+
   public $minify_assets;
 
   public $inline_styles_css;

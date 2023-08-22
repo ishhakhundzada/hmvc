@@ -11,10 +11,13 @@ Route::prefix("user",function(){
   Route::post("home-action","user/home/action");
   Route::post("change","user/profile/change");
   Route::get("change","user/profile/change");
-  Route::post("changepass","user/settings/changsepass");
+  Route::post("changepass","user/settings/changepass");
+
+  Route::prefix("note",function(){
+    Route::post("add-action","user/note/add");
+    Route::put("edit","user/note/edit");
+    Route::delete("delete","user/note/delete");
+  });
+
 });
 Route::post("logout","user/profile/logout");
-
-
-
-// Route::get("profile","profile/readdata");

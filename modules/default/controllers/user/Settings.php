@@ -15,19 +15,20 @@ class Settings extends MY_Controller
     ],[
       "title" => "Settings"
     ]);
-		function changePass(){
-
-		}
   }
 	function changepass(){
 		$data =[
+			"id" => $this->session->userdata("id"),
 			"password" =>$this->input->post("password"),
 			"newPassword"=>$this->input->post("newPassword"),
+			"confirmPassword" =>$this->input->post("confirmPassword"),
 		];
-		$data["newPassword"] = $data["newPassword"] ? password_hash($data["newPassword"],PASSWORD_DEFAULT) : NULL;
+		$pswrd = [
+			"password" => $this->input->post("newPassword")
+		];
+		// var_dump($pswrd["password"]);die;
 		$this->load->model("user/Settings_model","model");
-
-
-
+		$result = $this->model->changepass($data,$pswrd);
+		redirect(base_url("user/settings"));
 	}
 }

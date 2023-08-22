@@ -69,14 +69,6 @@ input:not([disabled]){
   text-indent:40px;
   position: relative;
   left: 650px;
-  /* Animations: */
-  -webkit-transition-timing-function: ease-in-out;
-  -webkit-transition-duration: .4s;
-  -webkit-transition-property: all;
-
-  -moz-transition-timing-function: ease-in-out;
-  -moz-transition-duration: .4s;
-  -moz-transition-property: all;
 }
 
 .logout:hover {
@@ -87,10 +79,5 @@ input:not([disabled]){
   position: absolute;
   left:85%;
   width: 100px;
-  height: 30px;
-}
-#editbutton{
-  position: absolute;
-  width: 75px;
   height: 30px;
 }

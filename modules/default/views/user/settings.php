@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
@@ -6,8 +5,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Lato|Short+Stack" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
-    <link rel = "stylesheet" type = "text/css"
-    href = "<?= assets("css/settings_style.css") ?>">
+
   </head>
   <body>
 
@@ -22,7 +20,7 @@
                         <a class="nav-link active" id="home-tab" data-toggle="tab" href="<?= base_url("user/profile")?>" role="tab" aria-controls="home" aria-selected="false">Profile</a>
                     </li>
                 </ul>
-                <form method="POST" action="<?= base_url("")?>">
+                <form method="POST" action="<?= base_url("user/changepass")?>">
                     <div class="row mt-5 align-items-center">
                         <div class="col-md-3 text-center mb-5">
                             <div class="avatar avatar-xl">
@@ -35,7 +33,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="inputPassword4">Old Password*</label>
-                                <input name="password"type="password" class="form-control" id="inputPassword5" />
+                                <input name="password" type="password" class="form-control" id="inputPassword5" />
                             </div>
                             <div class="form-group">
                                 <label for="inputPassword5">New Password*</label>
@@ -43,7 +41,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="inputPassword6">Confirm Password*</label>
-                                <input type="password" class="form-control" id="inputPassword6" />
+                                <input name="confirmPassword" type="password" class="form-control" id="inputPassword6" />
                             </div>
                         </div>
                         <div class="col-md-6">

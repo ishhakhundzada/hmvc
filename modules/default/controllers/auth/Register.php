@@ -26,7 +26,7 @@ class Register extends MY_Controller
 		];
 		$data["password"] = $data["password"] ? password_hash($data["password"],PASSWORD_DEFAULT) : NULL;
 
-		validateArray($data, ["first_name,last_name,email,password"]);
+		validateArray($data, ["first_name","last_name","email","password"]);
 
 		$this->load->model("auth/Register_model","model");
 		$result = $this->model->add($data);

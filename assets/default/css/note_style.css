@@ -1,370 +1,178 @@
-html,
 body {
   margin: 0;
   padding: 0;
-  background-color: #f4f6f9;
+  font-size: 18px;
 }
 
-*:focus {
-  outline: none;
+* {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
 }
 
-#main {
-  margin: 0;
-  padding: 0;
-  width: 101%;
-  height: 100%;
-  margin-top: 50px;
-}
-
-#header {
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-#header,
-#navbar,
-#navbar ul {
-  position: fixed;
-  z-index: 9999;
-  top: 0;
-  background: rgb(249, 239, 175);
-  height: 50px;
+#wrapper {
   width: 100%;
-  font-family: "Lato", Helvetica, Arial, sans-serif;
-  font-weight: bold;
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 0 20px;
 }
 
-#navbar ul {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  overflow-y: hidden;
+#note-editor {
+  padding-bottom: 12px;
+  margin-bottom: 48px;
+  border-bottom: 1px solid rgba(0,0,0,0.2);
+  opacity: 1;
+  transition: all 0.25s ease-out;
 }
 
-#navbar li {
-  padding: 20px;
-  margin: 0;
-  box-sizing: border-box;
-  text-transform: uppercase;
-  cursor: pointer;
-  user-select: none;
+#note-editor.hide {
+  opacity: 0;
 }
 
-#navbar li:hover {
-  padding: 20px;
-  margin: 0;
-  box-sizing: border-box;
-  overflow-y: hidden;
-  background: white;
-}
-#deleteAll{
-cursor: pointer;
-font-size: 25px;
-position: absolute;
-left:9%;
-bottom:80%;
-}
-.button-53 {
-  background-color: #3DD1E7;
-  border: 0 solid #E5E7EB;
-  box-sizing: border-box;
-  color: #000000;
-  display: flex;
-  /* font-family: ui-sans-serif,system-ui,-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji"; */
-  font-size: 1rem;
-  font-weight: 700;
-  justify-content: center;
-  line-height: 1.75rem;
-  padding: .75rem 1.65rem;
-  position: relative;
-  text-align: center;
-  text-decoration: none #000000 solid;
-  text-decoration-thickness: auto;
+label {
+  display: block;
   width: 100%;
-  max-width: 460px;
+  margin-bottom: 15px;
+}
+
+input {
+  font-size: 16px;
+  display: block;
+  width: 300px;
+  margin-bottom: 15px;
+  padding: 8px 6px;
+}
+
+input.is-empty {
+  border: 2px solid tomato;
+}
+
+textarea {
+  font-size: 16px;
+  display: block;
+  margin-bottom: 15px;
+  padding: 8px 6px;
+}
+
+textarea.is-empty {
+  border: 1px solid tomato;
+}
+
+#button {
   position: relative;
-  cursor: pointer;
-  transform: rotate(-2deg);
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
 }
 
-.button-53:focus {
-  outline: 0;
-}
-
-.button-53:after {
-  content: '';
+#error {
+  color: tomato;
   position: absolute;
-  border: 1px solid #000000;
-  bottom: 4px;
-  left: 4px;
-  width: calc(100% - 1px);
-  height: calc(100% - 1px);
+  top: 12px;
+  left: 150px;
+  line-height: 16px;
 }
 
-.button-53:hover:after {
-  bottom: 2px;
-  left: 2px;
-}
-.sticky {
-  font: 20px "Short Stack", "Gloria Hallelujah", cursive;
-  line-height: 1.5;
-  border: 0;
-  border-radius: 3px;
-  background: linear-gradient(rgb(249, 239, 175), rgb(247, 233, 141));
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  width: 270px;
-  min-height: 250px;
-  margin: 30px;
-  transition: 0.3s;
-  float: left;
-  display: none;
-  vertical-align: top;
-}
-
-.sticky:hover {
-  transform: scale(1.05);
-  box-shadow: 0 5px 8px rgba(0, 0, 0, 0.15);
-}
-
-.sticky-content::-webkit-scrollbar {
-  width: 10px;
-}
-
-.sticky-content::-webkit-scrollbar-track {
-  background: #f1f1f1;
-}
-
-.sticky-content::-webkit-scrollbar-thumb {
-  background: #888;
-}
-
-.sticky-content::-webkit-scrollbar-thumb:hover {
-  background: #555;
-}
-
-.sticky:nth-child(even) {
-  transform: rotate(2deg);
-}
-
-.sticky:nth-child(odd) {
-  transform: rotate(-1.5deg);
-}
-
-.sticky-header {
-  height: 30px;
-  width: inherit;
-  background: rgba(0, 0, 0, 0.1);
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  overflow: hidden;
-}
-
-.sticky-header-menu {
-  font-weight: bold;
-  padding: 10px 15px;
-  box-sizing: border-box;
-  display: block;
-  width: 50px;
-  text-align: center;
-  cursor: pointer;
+button:nth-last-child(2) {
   position: relative;
-}
-
-.sticky-header-menu:hover {
-  background-color: rgba(0, 0, 0, 0.1);
-}
-
-.sticky-content {
-  padding: 10px 10px 0 10px;
-  overflow-y: auto;
-  width: 270px;
-  min-height: 250px;
-  box-sizing: border-box;
-  border: 0;
-  resize: vertical;
-  background-color: transparent;
   display: block;
-  cursor: default;
-}
-
-.sticky-content:focus {
+  width: 100px;
+  margin-top: 40px;
+  padding: 12px 8px;
+  border-radius: 5px;
+  margin-bottom: 15px;
   outline: none;
+  border:0;
+  box-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+  background: dodgerblue;
+  color: white;
+  font-size: 14px;
 }
 
-#createStickyBtn {
-  float: left;
-  display: none;
-  padding: 25px 25px 40px;
-  margin: 30px;
-  width: 270px;
-  height: 270px;
-  user-select: none;
-  padding: 20px;
-  border-radius: 20px;
-  text-align: center;
-  border: 15px solid rgba(0, 0, 0, 0.1);
-  cursor: pointer;
-  color: rgba(0, 0, 0, 0.1);
-  font: 220px "Helvetica", sans-serif;
-  line-height: 185px;
-  box-sizing: border-box;
-  vertical-align: top;
+button:active {
+  box-shadow: 0px 0px 1px rgba(0,0,0,0.1);
 }
 
-#createStickyBtn:hover {
-  border-color: rgba(0, 0, 0, 0.2);
-  color: rgba(0, 0, 0, 0.2);
+ul {
+  padding-left: 0;
 }
 
-.dropdown-content-hide {
-  display: none;
+#notes-section {
+  opacity: 1;
+  visibility: visible;
+  transition: all 0.25s ease-out;
+}
+
+#notes-section.hide {
+  opacity: 0;
+  visibility: hidden;
+}
+
+#notes th {
+  /* position: relative;
+  list-style-type: none;
+  display: block;
+  float: left; */
+  /* width: 75px; */
+  /* height: 80px; */
+  /* padding: 8px 12px;
+  border-radius: 5px;
+  margin: 0 5px 12px; */
+  padding: 30px;
+  margin: auto;
+}
+#notes td{
+padding: 30px;
+margin: auto;
+}
+
+#notes li.red {
+  background: pink;
+}
+
+#notes li.green {
+  background: palegreen;
+}
+
+#notes li.blue {
+  background: lightskyblue;
+}
+
+footer {
   position: absolute;
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-  z-index: 1;
-  top: 30px;
+  bottom: 0;
+  width: 100%;
+  height: 24px;
   left: 0;
-  width: 270px;
-  box-sizing: border-box;
-  justify-content: space-between;
+  background: rgba(255,255, 255, 0.4);
+  padding: 5px 0;
 }
 
-.dropdown-content-show {
-  top: 30px;
-  left: 0;
+.edit {
+  position: absolute;
+  height: 24px;
+  left: 12px;
+  line-height: 24px;
+  cursor: pointer;
 }
 
-.dropdown-content-hide div {
-  padding: 14px 14px;
-  flex: 1;
+.delete {
+  float: right;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  cursor: pointer;
 }
 
-.pink-color {
-  background: linear-gradient(rgb(250, 214, 231), rgb(236, 185, 209));
+i:before {
+  font-size: 18px;
 }
 
-.blue-color {
-  background: linear-gradient(rgb(175, 249, 238), rgb(150, 226, 214));
+.note-title {
+  font-size: 1.5em;
+  font-weight: bold;
+  display: block;
+  width: 100%;
+
 }
 
-.green-color {
-  background: linear-gradient(rgb(178, 249, 175), rgb(152, 228, 149));
-}
-
-.yellow-color {
-  background: linear-gradient(rgb(249, 239, 175), rgb(247, 233, 141));
-}
-
-.purple-color {
-  background: linear-gradient(rgb(218, 215, 250), rgb(197, 194, 232));
-}
-
-.drop-button {
-  margin-left: auto;
-}
-
-.notSaved {
-  display: none;
-}
-
-.notSaved:hover {
-  background-color: transparent;
-  cursor: auto;
-}
-
-@media (max-width: 1024px) {
-  .sticky {
-    line-height: 1.2;
-    width: 200px;
-    min-height: 180px;
-    margin: 20px;
-  }
-
-  .sticky-content {
-    width: 200px;
-    min-height: 170px;
-    font-size: 16px;
-  }
-
-  .dropdown-content-hide {
-    width: 200px;
-  }
-
-  #createStickyBtn {
-    margin: 20px;
-    width: 200px;
-    height: 180px;
-
-    padding: 0;
-    line-height: 150px;
-  }
-
-  #header,
-  #how-it-works {
-    font-size: 14px;
-  }
-}
-
-@media (max-width: 720px) {
-  .sticky {
-    line-height: 1.2;
-    width: 130px;
-    min-height: 145px;
-    margin: 15px;
-  }
-
-  .sticky-content {
-    width: 130px;
-    min-height: 115px;
-    font-size: 14px;
-  }
-
-  .dropdown-content-hide {
-    width: 130px;
-  }
-
-  .dropdown-content-hide div {
-    padding: 10px 10px;
-  }
-
-  #createStickyBtn {
-    margin: 15px;
-    width: 140px;
-    height: 140px;
-    padding: 0;
-    font: 90px "Helvetica", sans-serif;
-  }
-
-  #header,
-  #how-it-works {
-    font-size: 12px;
-  }
-  #how-it-works {
-    top: 30px;
-  }
-  .sticky-header-menu {
-    padding: 0 10px 0 0;
-    width: 25px;
-    margin: 0 3px;
-  }
-
-  .drop-button {
-    margin-left: auto;
-  }
-
-  .sticky-header {
-    justify-content: space-around;
-  }
-
-  #header,
-  #navbar,
-  #navbar ul {
-    height: 30px;
-  }
+.note-message {
+  display: block;
+  width: 100%;
 }

@@ -23,13 +23,14 @@ class Login extends MY_Controller
     ];
     $this->load->model("auth/Login_model", "model");
     $result = $this->model->action($params);
-		validateArray($params,["email,password"]);
 // var_dump($result); die;
     if (isset($result["code"]) && $result["code"] === Status_codes::HTTP_OK) {
 			$result["data"]["is_active"] = $result["data"]["is_active"] === "1";
       Flash::set("type","success");
       Flash::set("message",$result["message"]);
 			$this->session->set_userdata($result["data"]);
+			// var_dump($params);die;
+			validateArray($params,["email","password"]);
       redirect(base_url("user/note"));
 
     } else {

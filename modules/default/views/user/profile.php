@@ -16,7 +16,7 @@
                       <div class="d-flex flex-column align-items-center text-center">
                         <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="150">
                         <div class="mt-3">
-                          <h4><?= htmlentities($row["first_name"])?> <?= htmlentities($row["first_name"])?> </h4>
+                          <h4><?= htmlentities($row["first_name"])?> <?= htmlentities($row["last_name"])?> </h4>
                         </div>
                       </div>
                     </div>

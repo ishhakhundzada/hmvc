@@ -11,10 +11,16 @@ class Profile extends MY_Controller
 
   public function index(){
 		$params = [
-			"id" => $this->session->userdata("id")
+			"id" => Auth::user()
 		];
+		// var_dump($params["id"]);die;
 		$this->load->model("user/Profile_model","model");
 		$results=$this->model->readdata($params);
+
+		$this->extraCSS = [
+      "css/profile_style.css",
+    ];
+
 		$this->view([
 			"layouts/header",
 			"user/profile"

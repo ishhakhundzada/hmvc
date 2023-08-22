@@ -1,51 +1,41 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-
-<head>
-  <meta charset="utf-8">
-  <title>Stikies</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" type="text/css">
-  <link href="https://fonts.googleapis.com/css?family=Lato|Short+Stack" rel="stylesheet">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
-  <!-- <link rel="stylesheet" href="styles.css"> -->
-  <link rel = "stylesheet" type = "text/css"
-     href = "<?= assets("css/note_style.css") ?>">
-  <!-- <script src="main.js"></script> -->
-  <script src="<?= assets("js/home.js")  ?>"> </script>
-</head>
-
-<body>
-
-      <!-- <ul>
-        <li id="how-it-works-btn">How it works</li>
-      </ul> -->
-
-<!-- home action add ele -->
-  <main id="main">
-    <div class="sticky">
-      <div class="sticky-header">
-        <span class="sticky-header-menu add-button fas fa-plus" title='new sticky'></span>
-        <span class="sticky-header-menu notSaved fas fa-check" title='not saved'></span>
-        <!-- <button type="button" name="button">Save</button> -->
-        <span class="sticky-header-menu drop-button fas fa-paint-brush" title='change color'></span>
-        <div class="dropdown-content-hide">
-          <div class="pink-color"></div>
-          <div class="yellow-color"></div>
-          <div class="green-color"></div>
-          <div class="blue-color"></div>
-          <div class="purple-color"></div>
-        </div>
-        <span class="sticky-header-menu remove-button fas fa-trash-alt" title='delete sticky'></span>
+<div id="wrapper">
+    <form  action="<?=base_url("user/note/add-action")?>" method="POST">
+    <div id="note-editor">
+      <h2 id="note-editor-title">Create Note</h2>
+      <label>Title:</label>
+      <input type="text" id="title" name="title" />
+      <label>Body:</label>
+      <input type="text" id="message" name="body"/>
+      <div id="button">
+        <button type="submit" name="note"id="add-btn">Create Note</button>
+        <div id="error"></div>
       </div>
-      <textarea class="sticky-content">
-        hyasgdhjas
-        </textarea>
     </div>
-    <div id="createStickyBtn">+</div>
-  </main>
-  <button class="button-53" id="deleteAll">Delete all</button>
-<!-- </form> -->
-</body>
+  </form>
 
+    <div id="notes-section">
+      <h2>Notes</h2>
+      <table id="notes">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Body</th>
+            <th> #</th>
+          </tr>
+        </thead>
+        <tbody>
+          <?php foreach ($row as $key => $value) {  ?>
+            <tr data-id="<?= $value["id"] ?>">
+              <td> <input value ="<?= htmlentities($value["title"])?>" /> </td>
+              <td> <input value ="<?= htmlentities($value["body"])?>" /> </td>
+              <td> <button type="submit" data-role="edit-button" > Save Note </button> </td>
+              <td> <button type="submit" data-role="delete-button"> Delete Note </button> </td>
+            </tr>
+          <?php } ?>
+      </tbody>
+    </table>
+    </div>
+  </div>
+</body>
+<script type="text/javascript" src="<?=assets("js/note.js")?>"> </script>
 </html>
