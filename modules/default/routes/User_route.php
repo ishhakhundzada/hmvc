@@ -13,6 +13,8 @@ Route::prefix("user",function(){
   Route::get("change","user/profile/change");
   Route::post("changepass","user/settings/changepass");
 
+  
+
   Route::prefix("note",function(){
     Route::post("add-action","user/note/add");
     Route::put("edit","user/note/edit");
